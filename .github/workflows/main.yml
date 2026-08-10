@@ -24,7 +24,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: project
-        run: npm install
+        run: npm install --include=dev
 
       - name: Build web app
         working-directory: project
