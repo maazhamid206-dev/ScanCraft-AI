@@ -26,9 +26,19 @@ jobs:
         working-directory: project
         run: npm install --include=dev
 
+        - name: Check Vite
+         working-directory: project
+         run: |
+          ls node_modules/.bin
+          npx vite --version
+        
+
       - name: Build web app
         working-directory: project
-        run: npm run build
+         run: |
+         npx vite build
+          npx esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs
+         
 
       - name: Sync Capacitor Android project
         working-directory: project
